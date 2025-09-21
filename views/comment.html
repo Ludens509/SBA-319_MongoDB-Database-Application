@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="/">MiniBlog</a></h1>
+        <nav class="nav">
+          <a href="/users" class="nav-link">users</a>
+          <a href="/posts" class="nav-link">Posts</a>
+          <a href="/comments" class="nav-link">comments</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="app">
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 2rem; text-align: center">
+        <h1>#title#</h1>
+        <!-- <div class="page-description">#content#</div> -->
+      </div>
+
+      <!--  -->
+
+      <!-- Individual Post -->
+      <section class="posts-section">
+        <div class="section-header">
+          <h2>Latest comments</h2>
+          <a href="/posts/new" class="btn btn-primary" id="postBtn">New comments</a>
+        </div>
+        <!-- Comment Form -->
+        <form
+          method="POST"
+          action="/comments"
+          class="comment-form active form-create-post"
+        >
+          <div>
+            <label for="author">author</label>
+            <input
+              class="input-field"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Author Name"
+            />
+          </div>
+
+
+          <div>
+            <label for="textarea">body</label>
+            <textarea
+              id="body"
+              name="body"
+              placeholder="Write something..."
+              rows="4"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">submit comment</button>
+        </form>
+      </section>
+
+      <!-- Single Post View (Hidden by default, show when viewing individual post) -->
+      <section class="single-post">
+        <!-- Comments Section -->
+        <section class="comments-section">
+          <div style=" display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 1rem;  ">
+            <h2>Total number of comments</h2>
+            <span>(#content#)</span>
+          </div>
+
+          <!-- Comments List -->
+          <div class="comments">
+            <!-- Individual Comment -->
+            #commentsHtml#
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

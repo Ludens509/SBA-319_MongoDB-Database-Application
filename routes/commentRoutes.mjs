@@ -38,6 +38,7 @@ router.route("/")
         let getAllComments = await Comment.find({});
         //Return
         res.json(getAllComments);
+       let data = res.json(getAllComments);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({msg:`❌ Error - ${err.message} `});

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="/">MiniBlog</a></h1>
+        <nav class="nav">
+          <a href="./users" class="nav-link">users</a>
+          <a href="./posts" class="nav-link">Posts</a>
+          <a href="./comments" class="nav-link">comments</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" id="app">
+      <!-- Page Header -->
+      <div class="page-header" style="margin-bottom: 2rem; text-align:center;"  >
+        <h1>#title#</h1>
+        <div class="page-description">#content#</div>
+      </div>
+
+      <!--  -->
+
+      <!-- Individual Post -->
+      <section class="posts-section">
+        <div class="section-header">
+          <h2>Latest Posts</h2>
+          <a href="/posts/new" class="btn btn-primary" id="postBtn">New Post</a>
+        </div>
+        <!-- Comment Form -->
+        <form method="POST" action="/posts" class="comment-form active form-create-post">
+          <div>
+            <label for="author">author</label>
+            <input
+            class="input-field"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Author Name"
+            />
+          </div>
+
+          <div>
+            <label for="title">Title</label>
+            <input
+            class="input-field"
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Post Title"
+            />
+          </div>
+
+          <div>
+            <label for="textarea">content</label>
+            <textarea
+              id="content"
+              name="content"
+              placeholder="Write something..."
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">submit Post</button>
+        </form>
+
+        #postsHtml#
+       
+      </section>
+
+      <!-- Single Post View (Hidden by default, show when viewing individual post) -->
+      <section class="single-post" style="display: none">
+        <!-- Comments Section -->
+        <section class="comments-section">
+          <h3>Comments (5)</h3>
+
+          <!-- Comments List -->
+          <div class="comments">
+            <!-- Individual Comment -->
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-meta">
+                  <span class="comment-author">Alice Johnson</span>
+                  <span class="comment-date">2 hours ago</span>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Great article! I've been trying to apply these principles to
+                  my own designs. The section about white space was particularly
+                  helpful.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="comments">
+            <!-- Individual Comment -->
+            <div class="comment">
+              <div class="comment-header">
+                <div class="comment-meta">
+                  <span class="comment-author">Alice Johnson</span>
+                  <span class="comment-date">2 hours ago</span>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Great article! I've been trying to apply these principles to
+                  my own designs. The section about white space was particularly
+                  helpful.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>
