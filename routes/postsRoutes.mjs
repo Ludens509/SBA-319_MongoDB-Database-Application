@@ -22,10 +22,38 @@ router.get("/seed", async (req, res) => {
 router.route("/")
 .post(async(req,res)=>{
     try{
+
+            const { author, title, content } = req.body;
+        
+        // Validate required fields
+        if (!author || !title || !content) {
+            return res.status(400).render("index", {
+                title: "MiniBlog - Error",
+                content: "❌ Error - All fields (author, title, content) are required",
+               });
+        }
+
+        // Check if post with identical title already exists
+        const existingPost = await Post.findOne({ title: title });
+        if (existingPost) {
+            return res.status(400).render("index", {
+                title: "MiniBlog - Error",
+                content: "🩻 Error - Post title already exists",
+            });
+        }
+
         //Action
-        let newPost = await Post.create(req.body);
+        let newPost = await Post.create({
+            author: author,
+            title: title,
+            content: content,
+            createdAt_: new Date(),
+            comments: 0
+        });
+        console.log("New Post-created:",newPost)
+
         //Return
-        res.json(newPost);
+        // res.json(newPost);
     }catch(err){
         console.log(err.message);
         res.status(500).json({msg:`❌ Error - ${err.message}`});
