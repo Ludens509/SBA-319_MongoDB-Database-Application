@@ -37,8 +37,36 @@ router.route("/")
         //Action
         let getAllComments = await Comment.find({});
         //Return
-        res.json(getAllComments);
-       let data = res.json(getAllComments);
+         // Generate HTML for all comments
+        let commentsHtml = '';
+        comments.forEach((comment) => {
+            const user = users.find((user) => user.id == comment.userId);
+
+            // const usercomments = comment.userId == user.id
+
+            commentsHtml += `<div class="comment">
+              <div class="comment-header">
+                <div class="comment-meta">
+                  <span class="comment-author">${user.name}</span>
+                  <span class="comment-date"> ${new Date().toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div class="comment-content">
+                <p>
+                  ${comment.body}
+                </p>
+              </div>
+            </div>
+              `;
+        })
+        /*---------------------------------*/
+        const options = {
+            title: "MiniBlog - All comments",
+            content: comments.length,
+            commentsHtml: commentsHtml
+        };
+
+        res.render("comment", options);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({msg:`❌ Error - ${err.message} `});
