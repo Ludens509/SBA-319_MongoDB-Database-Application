@@ -15,7 +15,7 @@ const router = express.Router();
 //   }
 // });
 
-// Get animals by habitat
+// //Get animals by habitat
 // router.get("/habitat/:hab", async (req, res) => {
 //   let result = await Mammal.inHabitat(req.params.hab);
 
