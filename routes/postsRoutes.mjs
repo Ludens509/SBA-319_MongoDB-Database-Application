@@ -116,7 +116,7 @@ router.route("/")
                         </h3>
                         <div class="post-meta">
                             <span class="author">By <a href="/users/${post.author || 'anonymous'}">${post.author || 'Anonymous'}</a></span>
-                            <span class="date">${post.date || new Date().toLocaleDateString()}</span>
+                            <span class="date">${post.createdAt ? new Date(post.createdAt).toLocaleDateString() :post.date}</span>
                             <span class="comments-count">${post.comments?.length || 0} comments</span>
                         </div>
                     </header>
