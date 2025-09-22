@@ -21,20 +21,20 @@ export const users = [
   },
   {
     name: "Diana Prince",
-    username: "diana_p",
-    email: "diana@example.com",
+    username: "Prince",
+    email: "prince@example.com",
     role: "user",
   },
   {
     name: "James cook",
-    username: "diana_p",
-    email: "diana@example.com",
-    role: "user",
+    username: "cook",
+    email:"cook@example.com",
+    role: "admin",
   },
   {
     name: "Josh Doe",
-    username: "diana_p",
-    email: "diana@example.com",
+    username: "josh",
+    email: "josh@example.com",
     role: "user",
   },
 ];

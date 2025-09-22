@@ -1,15 +1,14 @@
-import express from "express";
 import dotenv from "dotenv";
+import express from "express";
+import methodOverride from 'method-override';
+import connectDB from "./db/conn.mjs";
+import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 import globalErr from "./middleware/globalErr.mjs";
 import log from "./middleware/logginMiddleware.mjs";
-import connectDB from "./db/conn.mjs";
-import mammalRoutes from "./routes/mammalRoutes.mjs";
 import commentRoutes from "./routes/commentRoutes.mjs";
+import editRoutes from "./routes/editRoutes.mjs";
 import postRoutes from "./routes/postsRoutes.mjs";
 import userRoutes from "./routes/userRoutes.mjs";
-import editRoutes from "./routes/editRoutes.mjs"
-import methodOverride from 'method-override';
-import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 
 //Setups
 dotenv.config();
@@ -36,7 +35,6 @@ app.use(express.static("./script"));
 templateEngineHandler(app);
 
 //Routes
-app.use("/api/mammal", mammalRoutes);
 app.use("/users", userRoutes);
 app.use("/posts",postRoutes);
 app.use("/comments",commentRoutes);
