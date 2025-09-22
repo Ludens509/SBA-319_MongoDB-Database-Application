@@ -7,6 +7,7 @@ import mammalRoutes from "./routes/mammalRoutes.mjs";
 import commentRoutes from "./routes/commentRoutes.mjs";
 import postRoutes from "./routes/postsRoutes.mjs";
 import userRoutes from "./routes/userRoutes.mjs";
+import editRoutes from "./routes/editRoutes.mjs"
 import methodOverride from 'method-override';
 import { templateEngineHandler } from "./engineTemplate/templateEngine.mjs";
 
@@ -22,8 +23,9 @@ connectDB();
 //Midddleware
 app.use(express.json());
 app.use(log);
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
+
 
 // serve static files from the styles directory
 app.use(express.static("./styles"));
@@ -38,7 +40,52 @@ app.use("/api/mammal", mammalRoutes);
 app.use("/users", userRoutes);
 app.use("/posts",postRoutes);
 app.use("/comments",commentRoutes);
-// app.use("/api/ave", aveRoutes);
+app.use("/",editRoutes)
+
+// / Adding some HATEOAS links.
+app.get("/", (req, res) => {
+
+  res.json({
+    links: [
+      {
+        href: "/comments",
+        rel: "comments",
+        type: "GET",
+      },
+      {
+        href: "/posts",
+        rel: "posts",
+        type: "POST",
+      },
+      {
+        href: "/posts",
+        rel: "posts",
+        type: "GET",
+      },
+      {
+        href: "/users",
+        rel: "users",
+        type: "GET",
+      },
+      {
+        href: "/posts/:id/edit",
+        rel: "api",
+        type: "GET",
+      },
+    
+      {
+        href: "/posts/:id/edit",
+        rel: "api",
+        type: "PUT",
+      },
+      {
+        href: "/posts/:id",
+        rel: "api",
+        type: "DELETE",
+      },
+    ],
+  });
+});
 
 //global Middleware
 app.use(globalErr);

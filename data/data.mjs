@@ -25,6 +25,18 @@ export const users = [
     email: "diana@example.com",
     role: "user",
   },
+  {
+    name: "James cook",
+    username: "diana_p",
+    email: "diana@example.com",
+    role: "user",
+  },
+  {
+    name: "Josh Doe",
+    username: "diana_p",
+    email: "diana@example.com",
+    role: "user",
+  },
 ];
 
 
@@ -47,8 +59,29 @@ export const posts = [
   {
     title: "Why React is Popular",
     content:
-      "React’s component-based architecture and virtual DOM make it one of the most popular front-end frameworks for developers.",
+      "React\'s component-based architecture and virtual DOM make it one of the most popular front-end frameworks for developers.",
     author: "charlieb",
+    comments: [],
+  },
+  {
+    title: "The king of the Jungle",
+    content:
+      "React\'s component-based architecture and virtual DOM make it one of the most popular front-end frameworks for developers.",
+    author: "Barnabe",
+    comments: [],
+  },
+  {
+    title: "Why The world i round",
+    content:
+      "React\'s component-based architecture and virtual DOM make it one of the most popular front-end frameworks for developers.",
+    author: "Nappeleon",
+    comments: [],
+  },
+  {
+    title: "At the roots of things",
+    content:
+      "React\'s component-based architecture and virtual DOM make it one of the most popular front-end frameworks for developers.",
+    author: "Jacques",
     comments: [],
   },
 ];
@@ -69,6 +102,21 @@ export const comments = [
   {
     content: "React really changed the way I build user interfaces.",
     author: "Shawn Bowsky",
+    post: new mongoose.Types.ObjectId(),
+  },
+  {
+    content: "React really changed the way I build user interfaces.",
+    author: "Greg beenie",
+    post: new mongoose.Types.ObjectId(),
+  },
+  {
+    content: "Life of a rookie among the Pro",
+    author: "Rebeca slawn",
+    post: new mongoose.Types.ObjectId(),
+  },
+  {
+    content: "How to play soccer with sandals.",
+    author: "Jhon Doe",
     post: new mongoose.Types.ObjectId(),
   },
 ];

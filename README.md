@@ -62,6 +62,19 @@ This application/site was created as a submission to a [SBA](https://www.canva.c
 - [Node.js](https://nodejs.org/)
 - [Marked - a markdown parser](https://github.com/chjj/marked)
 
+
+| **Href**           | **Rel**     | **Type** |
+|---------------------|-------------|----------|
+| `/comments`         | comments    | GET      |
+| `/posts`            | posts       | POST     |
+| `/posts`            | posts       | GET      |
+| `/users`            | users       | GET      |
+| `/posts/:id/edit`   | posts       | GET      |
+| `/posts/:id/edit`   | posts       | PUT      |
+| `/posts/:id`        | posts       | DELETE   |
+|---------------------|-------------|----------|
+
+
 ## Contact
 
 - GitHub [@Ludens509](https://github.com/Ludens509)

@@ -107,9 +107,9 @@
   <body>
     <header class="header">
       <div class="container">
-        <h1 class="logo"><a href="/">MiniBlog</a></h1>
+        <h1 class="logo"><a href="/posts">MiniBlog</a></h1>
         <nav class="nav">
-          <a href="#" class="nav-link">Home</a>
+          <a href="/" class="nav-link">Home</a>
           <a href="/posts" class="nav-link">Back</a>
         </nav>
       </div>
@@ -124,13 +124,13 @@
           <input type="hidden" id="postId" value="#postId#">
           
           <div class="form-group">
-            <label for="username">Author</label>
+            <label for="author">Author</label>
             <input
               class="input-field"
               type="text"
-              name="username"
-              id="username"
-              value="#username#"
+              name="author"
+              id="author"
+              value="#author#"
               placeholder="Author Name"
               required
             />
@@ -168,9 +168,7 @@
       </div>
 
       <!-- Success/Updated Posts Display (shows after update) -->
-      <div class="posts-display">
-        #postsHtml#
-      </div>
+      
     </main>
 
    

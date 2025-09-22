@@ -125,8 +125,8 @@ router.route("/")
                     </div>
                     <footer class="post-footer">
                         <div class="post-actions">
-                            <a href="/posts/${post._id || post.id || index + 1}/edit" class="btn-small btn-edit">Edit</a>
-                            <button type="button" class="btn-small btn-delete" onclick="deletePost('${post._id || post.id || index + 1}')">Delete</button>
+                                                        <a href="/posts/${post._id}/edit" class="btn-small btn-edit">Edit</a>
+                            <a  class="btn-small btn-delete" href='/posts/${post._id}')">Delete</a>
                         </div>
                     </footer>
                 </article>
@@ -154,6 +154,43 @@ router.route("/")
 
 
 
+delete("/posts/:id", async (req, res) => {
+    try {
+        const postId = req.params.id;
+        
+        // Find the post first to check if it exists
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).json({
+                success: false,
+                message: "Post not found"
+            });
+        }
+        
+        // Delete the post
+        const deletedPost = await Post.findByIdAndDelete(postId);
+        console.log("Post deleted successfully:", deletedPost.title);
+        
+        res.json({
+            success: true,
+            message: "Post and associated comments deleted successfully",
+            deletedPost: {
+                id: deletedPost._id,
+                title: deletedPost.title,
+                author: deletedPost.author
+            },
+            deletedCommentsCount: deletedComments.deletedCount
+        });
+        
+        res.redirect("/posts");
+    } catch (err) {
+        console.error("Error deleting post:", err.message);
+        res.status(500).json({
+            success: false,
+            message: `Error deleting post: ${err.message}`
+        });
+    }
+});
 
 
 
